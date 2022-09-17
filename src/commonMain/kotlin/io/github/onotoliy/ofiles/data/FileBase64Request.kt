@@ -9,31 +9,25 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 
 /**
- * Ошибка произощедшая на устройстве.
+ * Запрос на загрузку файла в формате Base64.
  *
  * @param uid Уникальный идентификатор.
  * @param account Аккаунт.
  * @param author Автор.
- * @param contentType ContentType.
  * @param description Описание.
- * @param extension Расширение.
  * @param name Название.
- * @param originalName Оригинальное название.
- * @param size Размер.
  * @param creationDate Дата создания.
  * @param parameters Дополнительные параметры.
+ * @param content Содержимое файла в формате Base64.
  * @author Anatoliy Pokhresniy
  */
-data class FileInfo(
+data class FileBase64Request(
     override val uid: String = "",
     override val author: Option = Option(),
     override val creationDate: Instant = Clock.System.now(),
     override val name: String = "",
-    val originalName: String = "",
     val description: String = "",
     val account: String = "",
-    val extension: String = "",
-    val contentType: String = "",
-    val size: Long = 0,
-    val parameters: List<Option> = listOf()
+    val parameters: List<Option> = listOf(),
+    val content: String = ""
 ): HasUID, HasName, HasAuthor, HasCreationDate
